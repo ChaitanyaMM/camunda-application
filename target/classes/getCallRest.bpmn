@@ -1,0 +1,141 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<bpmn:definitions xmlns:bpmn="http://www.omg.org/spec/BPMN/20100524/MODEL" xmlns:bpmndi="http://www.omg.org/spec/BPMN/20100524/DI" xmlns:dc="http://www.omg.org/spec/DD/20100524/DC" xmlns:camunda="http://camunda.org/schema/1.0/bpmn" xmlns:di="http://www.omg.org/spec/DD/20100524/DI" id="Definitions_19ammk2" targetNamespace="http://bpmn.io/schema/bpmn" exporter="Camunda Modeler" exporterVersion="4.1.1">
+
+  <bpmn:process id="Process_1hqgsvo" name="getcalltest" isExecutable="true" camunda:versionTag="1.0">
+
+    <bpmn:startEvent id="StartEvent_1" name="getcalltest">
+
+      <bpmn:outgoing>Flow_0kig89u</bpmn:outgoing>
+
+    </bpmn:startEvent>
+
+    <bpmn:endEvent id="Event_1gdc6tw" name="endedcall">
+
+      <bpmn:incoming>Flow_0jymklm</bpmn:incoming>
+
+    </bpmn:endEvent>
+
+    <bpmn:sequenceFlow id="Flow_0kig89u" sourceRef="StartEvent_1" targetRef="Activity_060vqfl" />
+
+    <bpmn:sequenceFlow id="Flow_0et2xr0" sourceRef="Activity_060vqfl" targetRef="Activity_1e3te3p" />
+
+    <bpmn:serviceTask id="Activity_060vqfl" name="sampleconnect">
+
+      <bpmn:extensionElements>
+
+        <camunda:connector>
+
+          <camunda:inputOutput>
+
+            <camunda:inputParameter name="url">http://cs-scheduler.origin-ctc-core.optum.com/api/root/version</camunda:inputParameter>
+
+            <camunda:inputParameter name="method">GET</camunda:inputParameter>
+
+            <camunda:outputParameter name="output">${response}</camunda:outputParameter>
+
+          </camunda:inputOutput>
+
+          <camunda:connectorId>http-connector</camunda:connectorId>
+
+        </camunda:connector>
+
+      </bpmn:extensionElements>
+
+      <bpmn:incoming>Flow_0kig89u</bpmn:incoming>
+
+      <bpmn:outgoing>Flow_0et2xr0</bpmn:outgoing>
+
+    </bpmn:serviceTask>
+
+    <bpmn:sequenceFlow id="Flow_0jymklm" sourceRef="Activity_1e3te3p" targetRef="Event_1gdc6tw" />
+
+    <bpmn:userTask id="Activity_1e3te3p" name="usertask_after_getcall" camunda:assignee="chaitanya">
+
+      <bpmn:extensionElements>
+
+        <camunda:formData>
+
+          <camunda:formField id="output" label="output" type="string" />
+
+        </camunda:formData>
+
+      </bpmn:extensionElements>
+
+      <bpmn:incoming>Flow_0et2xr0</bpmn:incoming>
+
+      <bpmn:outgoing>Flow_0jymklm</bpmn:outgoing>
+
+    </bpmn:userTask>
+
+  </bpmn:process>
+
+  <bpmndi:BPMNDiagram id="BPMNDiagram_1">
+
+    <bpmndi:BPMNPlane id="BPMNPlane_1" bpmnElement="Process_1hqgsvo">
+
+      <bpmndi:BPMNEdge id="Flow_0et2xr0_di" bpmnElement="Flow_0et2xr0">
+
+       <di:waypoint x="390" y="117" />
+
+        <di:waypoint x="460" y="117" />
+
+      </bpmndi:BPMNEdge>
+
+      <bpmndi:BPMNEdge id="Flow_0kig89u_di" bpmnElement="Flow_0kig89u">
+
+        <di:waypoint x="188" y="117" />
+
+        <di:waypoint x="290" y="117" />
+
+      </bpmndi:BPMNEdge>
+
+      <bpmndi:BPMNEdge id="Flow_0jymklm_di" bpmnElement="Flow_0jymklm">
+
+        <di:waypoint x="560" y="117" />
+
+        <di:waypoint x="612" y="117" />
+
+      </bpmndi:BPMNEdge>
+
+      <bpmndi:BPMNShape id="_BPMNShape_StartEvent_2" bpmnElement="StartEvent_1">
+
+        <dc:Bounds x="152" y="99" width="36" height="36" />
+
+        <bpmndi:BPMNLabel>
+
+          <dc:Bounds x="145" y="142" width="50" height="14" />
+
+        </bpmndi:BPMNLabel>
+
+      </bpmndi:BPMNShape>
+
+      <bpmndi:BPMNShape id="Activity_06rri48_di" bpmnElement="Activity_060vqfl">
+
+        <dc:Bounds x="290" y="77" width="100" height="80" />
+
+      </bpmndi:BPMNShape>
+
+      <bpmndi:BPMNShape id="Event_1gdc6tw_di" bpmnElement="Event_1gdc6tw">
+
+        <dc:Bounds x="612" y="99" width="36" height="36" />
+
+        <bpmndi:BPMNLabel>
+
+          <dc:Bounds x="607" y="142" width="48" height="14" />
+
+        </bpmndi:BPMNLabel>
+
+      </bpmndi:BPMNShape>
+
+      <bpmndi:BPMNShape id="Activity_10aq67s_di" bpmnElement="Activity_1e3te3p">
+
+        <dc:Bounds x="460" y="77" width="100" height="80" />
+
+      </bpmndi:BPMNShape>
+
+    </bpmndi:BPMNPlane>
+
+  </bpmndi:BPMNDiagram>
+
+</bpmn:definitions>
