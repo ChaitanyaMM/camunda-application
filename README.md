@@ -1,6 +1,7 @@
 # camunda-application
 
 
+#camunda-engine start by hitting http://localhost:4000/
 
 camunda BPMN tool examples
 
